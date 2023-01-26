@@ -10,9 +10,12 @@ public class OpenWeatherVC {
 		Account account = (Account)stdController.getRecord();
         account = [select id, ShippingCity from Account where id =:account.id];
         
+        // variable creation area 
         String accountCity=account.ShippingCity;
+        // api key
         String apiKey = '5340a8fd26ea3ab4f4d228be2a3c4b70';
         
+        // setting up end point
         String requestEndPoint = 'https://api.openweathermap.org/data/2.5/weather';
         requestEndPoint += '?q='+accountCity;
         requestEndPoint += '&units=metric';
@@ -21,7 +24,7 @@ public class OpenWeatherVC {
         
         // http object creation to connect with server
         Http http = new Http();
-        // http request object to set the pre request parameters 
+        // http request object to set the pre requestP parameters 
         HttpRequest request = new HttpRequest();
         request.setEndpoint(requestEndPoint);
         request.setMethod('GET');
